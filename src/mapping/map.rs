@@ -40,9 +40,11 @@ impl Map {
               x_start: usize,
               y_start: usize,
               x_end: usize,
-              y_end: usize)
+              y_end: usize,
+              reaper_overrides: Vec<Vec<usize>>
+            )
               -> Self {
-        Map::new(pathing, placement, height_map, x_start, y_start, x_end, y_end)
+        Map::new(pathing, placement, height_map, x_start, y_start, x_end, y_end, reaper_overrides)
     }
 
     #[getter(ground_pathing)]
@@ -281,9 +283,12 @@ impl Map {
                x_start: usize,
                y_start: usize,
                x_end: usize,
-               y_end: usize)
+               y_end: usize,
+               reaper_overrides: Vec<Vec<usize>>
+            )
                -> Self {
-        let width = pathing.len();
+        
+            let width = pathing.len();
         let height = pathing[0].len();
         let mut points = vec![vec![map_point::MapPoint::new(); height]; width];
 
@@ -408,6 +413,13 @@ impl Map {
                     }
                 }
             }
+        }
+
+        for pt in reaper_overrides {
+            println!("x: {}-{}",pt[0], pt[1]);
+            // println!("x: {pt[0]}, y: {pt[1]}");
+            reaper_map[pt[0]][pt[1]] = 1;
+            reaper_map[pt[1]][pt[0]] = 1;
         }
 
         let air_pathing = PathFind::new_internal(fly_map);

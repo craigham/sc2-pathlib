@@ -24,13 +24,13 @@ pub fn modify_climb(points: &mut Vec<Vec<map_point::MapPoint>>, x: i32, y: i32, 
     // 01
     // 23
 
-    let h0 = points[x1][y1 + 1].height;
+let h0 = points[x1][y1 + 1].height;
     let h1 = points[x1 + 1][y1 + 1].height;
     let h2 = points[x1][y1].height;
     let h3 = points[x1 + 1][y1].height;
 
     // Difference between levels is 15.9375 in standard map height maps
-    // Difference between levels is 2 in standard sc2 measurement units.
+// Difference between levels is 2 in standard sc2 measurement units.
     // Because of rounding the height difference needs to be exactly 16
 
     let set_low = |x: Cliff| {
