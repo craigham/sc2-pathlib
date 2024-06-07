@@ -7,7 +7,8 @@ fn test_find_path_map() {
     let grid = read_vec_from_file("tests/maze4x4.txt");
     let grid2 = read_vec_from_file("tests/maze4x4.txt");
     let grid3 = read_vec_from_file("tests/maze4x4.txt");
-    let map = Map::new(grid, grid2, grid3, 1, 1, 3, 3);
+    let reaper_overrides: Vec<Vec<usize>> = Vec::new();
+    let map = Map::new(grid, grid2, grid3, 1, 1, 3, 3, reaper_overrides);
     let r = map.find_path_basic(0, (0f32, 0f32), (3f32, 3f32), Some(0));
     let (_, distance) = r;
     assert_eq!(distance, 6.0);

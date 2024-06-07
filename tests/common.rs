@@ -44,7 +44,7 @@ pub fn get_choke_map() -> Map {
     let grid = read_vec_from_file("tests/choke.txt");
     let grid2 = read_vec_from_file("tests/choke.txt");
     let grid_height = read_vec_from_file("tests/choke_height.txt");
-
-    let map = Map::new(grid, grid2, grid_height, 2, 2, 38, 38);
+    let reaper_overrides: Vec<Vec<usize>> = Vec::new();
+    let map = Map::new(grid, grid2, grid_height, 2, 2, 38, 38, reaper_overrides);
     map
 }
