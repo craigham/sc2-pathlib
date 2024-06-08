@@ -415,9 +415,7 @@ impl Map {
             }
         }
 
-        for pt in reaper_overrides {
-            println!("x: {}-{}",pt[0], pt[1]);
-            // println!("x: {pt[0]}, y: {pt[1]}");
+        for pt in reaper_overrides {            
             reaper_map[pt[0]][pt[1]] = 1;
             reaper_map[pt[1]][pt[0]] = 1;
         }
